@@ -34,8 +34,7 @@
 
     "AWSRegionArch2AMI" : {
       "us-east-1"      : { "32" : "ami-31814f58", "64" : "ami-1b814f72", "64HVM" : "ami-0da96764" },
-      "us-west-2"      : { "32" : "ami-38fe7308", "64" : "ami-30fe7300", "64HVM" : "NOT_YET_SUPPORTED" },
-      "us-west-1"      : { "32" : "ami-11d68a54", "64" : "ami-1bd68a5e", "64HVM" : "NOT_YET_SUPPORTED" }
+      "us-west-2"      : { "32" : "ami-38fe7308", "64" : "ami-30fe7300", "64HVM" : "ami-aa5ebdd2" }
     }
   },
 
@@ -76,7 +75,7 @@
           "/opt/aws/bin/cfn-init -s ", { "Ref" : "AWS::StackId" }, " -r Ec2Instance ",
           "         --region ", { "Ref" : "AWS::Region" }, "\n",
           "/opt/aws/bin/cfn-signal -e $? '", { "Ref" : "WaitHandle" }, "'\n",
-          "/bin/curl http://169.254.169.254/latest/meta-data/ipv4 > /var/www/html/index.html\n"
+          "/bin/curl http://169.254.169.254/latest/meta-data/local-hostname > /var/www/html/index.html\n"
         ]]}}        
       }
     },
